@@ -55,26 +55,20 @@ if __name__ == '__main__':
 	s = 'elf'
 	t = 'the awesome story that was unexplainable was that of the elf and the cart. the elf was very elf-like.'
 
+	print('')
+	print('pattern: ', s)
+	print('searchstring: ', t)
+	print('')
+
 	rs = RollingHash()
 	rt = RollingHash()
-	rf = RollingHash()
 
 	for i in range(len(s)):
 		rs.append(s[i])
-		log_output(rt, 'pre-a')
 		rt.append(t[i])
-		log_output(rt, 'pos-a')
 
-	print(rt.p)
+	print('prime:', rt.p)
 	print('')
-	print('')
-	log_output(rs, '-')
-	log_output(rt, '-')
-	log_output(rf, '-')
-
-	print('')
-	print('')
-
 
 	match_indexes = []
 	for i in range(len(s),len(t)):
@@ -84,7 +78,10 @@ if __name__ == '__main__':
 			if rs.get_window() == rt.get_window():
 				match_indexes.append((i-len(s)+1,i+1))
 
-	print(match_indexes)
+	print(
+		str(len(match_indexes)) + ' match found' if len(match_indexes)==1
+	        else str(len(match_indexes)) + ' matches found' +
+		        (': '+str(match_indexes) if match_indexes else ''))
 	for m in match_indexes:
 		print(t[m[0]:m[1]])
 
