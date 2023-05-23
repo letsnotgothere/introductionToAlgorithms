@@ -53,7 +53,7 @@ if __name__ == '__main__':
 		print('Operation: ' + op, 'Hash: ' + str(rh.hash), 'Ibase: ' + str(rh.ibase), 'Magic: ' + str(rh.magic), rh.get_window())
 
 	s = 'elf'
-	t = 'the awesome story that was unexplainable was that of the elf and the cart'
+	t = 'the awesome story that was unexplainable was that of the elf and the cart. the elf was very elf-like.'
 
 	rs = RollingHash()
 	rt = RollingHash()
@@ -76,8 +76,15 @@ if __name__ == '__main__':
 	print('')
 
 
+	match_indexes = []
 	for i in range(len(s),len(t)):
 		rt.append(t[i])
 		rt.skip(t[i-len(s)])
 		if rs.get_hash() == rt.get_hash():
-			print(rt.get_window())
+			if rs.get_window() == rt.get_window():
+				match_indexes.append((i-len(s)+1,i+1))
+
+	print(match_indexes)
+	for m in match_indexes:
+		print(t[m[0]:m[1]])
+
