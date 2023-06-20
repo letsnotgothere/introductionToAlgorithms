@@ -352,7 +352,7 @@ class BigNum(object):
 				R = R - S[j]
 				Q.d[0] = Q.d[0] | Byte.one()
 
-		return Q,R
+		return Q.normalize(),R
 
 	def fast_divmod(self, other):
 		'''
