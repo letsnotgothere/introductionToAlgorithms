@@ -49,6 +49,7 @@ class KaratsubaMultiplication(object):
 
 		n = len(x)
 
+
 		a,b = x[:n/2],x[n/2:]
 		c,d = y[:n/2],y[n/2:]
 
