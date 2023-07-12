@@ -17,8 +17,9 @@ class TestSolver(unittest.TestCase):
         start = rubik.I
         end = rubik.perm_apply(rubik.F, start)
         ans = solver.shortest_path(start, end)
+        correct_ans = [rubik.F]
         self.assertEqual(len(ans), 1)
-        self.assertEqual(ans, [rubik.F])
+        self.assertEqual(ans, correct_ans)
 
     def testShortestPath2(self):
         """Length 2 path."""
@@ -26,8 +27,9 @@ class TestSolver(unittest.TestCase):
         middle = rubik.perm_apply(rubik.F, start)
         end = rubik.perm_apply(rubik.L, middle)
         ans = solver.shortest_path(start, end)
+        correct_ans = [rubik.F, rubik.L]
         self.assertEqual(len(ans), 2)
-        self.assertEqual(ans, [rubik.F, rubik.L])
+        self.assertEqual(ans, correct_ans)
 
     def testShortestPath3(self):
         """Length 3 path."""
